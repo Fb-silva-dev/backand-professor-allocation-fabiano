@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 @Table(name = "matriculado")
 public class Matriculado {
 	@Id
-	@GeneratedValue(strategy  = GenerationType.IDENTITY)
+	@GeneratedValue(strategy   = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(length = 4, nullable = false)
@@ -21,9 +21,12 @@ public class Matriculado {
 	private String semestre;
 
 	private Double valor;
-
+	
+	@Column(name = "aluno_id",nullable = false)
 	private Long alunomoId;
-
+	
+	
+	@Column(name = "course_id",nullable = false)
 	private Long courseId;
 
 	public Matriculado() {
