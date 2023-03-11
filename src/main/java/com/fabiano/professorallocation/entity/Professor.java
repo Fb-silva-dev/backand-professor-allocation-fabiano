@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 public class Professor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true, nullable = false)
 	private Long id;
 
 	@Column(nullable = false)
