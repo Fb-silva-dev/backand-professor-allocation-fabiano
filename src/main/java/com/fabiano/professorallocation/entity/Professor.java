@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,7 +23,21 @@ public class Professor {
 	@Column(length = 11, nullable = false, unique = true)
 	private String cpf;
 
+	@Column(name = "department_id", nullable = false)
 	private Long departmentId;
+
+	// Criando atributo de navegação
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "department_id", nullable = false,insertable = false,updatable = false)
+	private Department department;
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 
 	public Professor() {
 		super();
