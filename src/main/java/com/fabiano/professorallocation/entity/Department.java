@@ -1,10 +1,14 @@
 package com.fabiano.professorallocation.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,9 +22,12 @@ public class Department {
 	private long id;
 
 	// Colunm (Usado para alterar as propriedades da coluna
-	@Column(length = 100, nullable = false)
+	@Column(name = "name", unique = true, nullable = false)
 	private String name;
 
+	@OneToMany(mappedBy = "department")
+	List<Professor> professors;
+	
 	public Department() {
 		super();
 	}

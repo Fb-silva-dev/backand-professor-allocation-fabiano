@@ -16,19 +16,18 @@ public class Professor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true, nullable = false)
 	private Long id;
-
 	@Column(nullable = false)
 	private String name;
 
-	@Column(length = 11, nullable = false, unique = true)
+	@Column(length = 14, nullable = false, unique = true)
 	private String cpf;
 
 	@Column(name = "department_id", nullable = false)
 	private Long departmentId;
 
 	// Criando atributo de navegação
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "department_id", nullable = false,insertable = false,updatable = false)
+	@ManyToOne(optional = false) // Cardinalidade minima por padrão é true
+	@JoinColumn(name = "department_id", nullable = false, insertable = false, updatable = false, referencedColumnName = "id") // Faz a junção das
 	private Department department;
 
 	public Department getDepartment() {

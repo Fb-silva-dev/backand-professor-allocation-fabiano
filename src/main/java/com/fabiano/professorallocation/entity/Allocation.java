@@ -29,10 +29,10 @@ public class Allocation {
 	private DayOfWeek day;
 
 	@Temporal(TemporalType.TIME)
-	@Column(nullable = false)
+	@Column(name = "inicio", nullable = false)
 	private Date inicioHora;
 	@Temporal(TemporalType.TIME)
-	@Column(nullable = false)
+	@Column(name = "fim", nullable = false)
 	private Date fimHora;
 
 	@Column(name = "professor_id", nullable = false)
