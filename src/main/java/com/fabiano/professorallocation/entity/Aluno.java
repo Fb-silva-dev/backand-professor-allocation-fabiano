@@ -1,10 +1,14 @@
 package com.fabiano.professorallocation.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,7 +20,7 @@ public class Aluno {
 	private Long id;
 
 	@Column(length = 100, nullable = false)
-	private String nome;
+	private String name;
 
 	@Column(length = 14, nullable = false, unique = true)
 	private String cpf;
@@ -36,24 +40,33 @@ public class Aluno {
 	@Column(length = 2, nullable = false)
 	private Long idade;
 
+	@Column(length = 11, nullable = false)
+	private Date data_nascimento;
+
+	
+	
 	public Aluno() {
 		super();
 	}
 
-	public Long getMatricula() {
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "responsavel_id", nullable = false, insertable = false, updatable = false, referencedColumnName = "id")
+	private Responsavel responsavel;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setMatricula(Long matricula) {
-		this.id = matricula;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
-		return nome;
+		return name;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.name = nome;
 	}
 
 	public String getCpf() {
@@ -104,10 +117,31 @@ public class Aluno {
 		this.idade = idade;
 	}
 
-	@Override
-	public String toString() {
-		return "Aluno [matricula=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rua=" + rua + ", numero=" + numero
-				+ ", bairro=" + bairro + ", cep=" + cep + ", idade=" + idade + "]";
+	public Date getData_nascimento() {
+		return data_nascimento;
 	}
 
-}
+	public void setData_nascimento(Date data_nascimento) {
+		this.data_nascimento = data_nascimento;
+	}
+
+	public Responsavel getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
+	}
+
+	@Override
+	public String toString() {
+		return "Aluno [id=" + id + ", nome=" + name + ", cpf=" + cpf + ", rua=" + rua + ", numero=" + numero
+				+ ", bairro=" + bairro + ", cep=" + cep + ", idade=" + idade + ", data_nascimento=" + data_nascimento
+				+ ", responsavel=" + responsavel + "]";
+	}
+	
+	
+
+	
+
+}	
