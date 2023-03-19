@@ -31,24 +31,13 @@ public class Allocation {
 	@Temporal(TemporalType.TIME)
 	@Column(name = "inicio", nullable = false)
 	private Date inicioHora;
+
 	@Temporal(TemporalType.TIME)
 	@Column(name = "fim", nullable = false)
 	private Date fimHora;
 
 	@Column(name = "professor_id", nullable = false)
 	private Long professorId;
-
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "professor_id", nullable = false, insertable = false, updatable = false)
-	private Professor professor;
-
-	public Professor getProfessor() {
-		return professor;
-	}
-
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
-	}
 
 	@Column(name = "course_id", nullable = false)
 	private Long courseId;
@@ -57,13 +46,9 @@ public class Allocation {
 	@JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
 	private Course course;
 
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
-	}
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "professor_id", nullable = false, insertable = false, updatable = false)
+	private Professor professor;
 
 	public Allocation() {
 		super();
@@ -117,10 +102,27 @@ public class Allocation {
 		this.courseId = courseId;
 	}
 
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
 	@Override
 	public String toString() {
 		return "Allocation [id=" + id + ", day=" + day + ", inicioHora=" + inicioHora + ", fimHora=" + fimHora
-				+ ", professorId=" + professorId + ", courseId=" + courseId + "]";
+				+ ", professorId=" + professorId + ", courseId=" + courseId + ", course=" + course + ", professor="
+				+ professor + "]";
 	}
 
 }
