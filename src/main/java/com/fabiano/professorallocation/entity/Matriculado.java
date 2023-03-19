@@ -5,48 +5,61 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "matriculado")
 public class Matriculado {
 	@Id
-	@GeneratedValue(strategy   = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(length = 4, nullable = false)
 	private int ano;
-	
+
 	@Column(length = 4, nullable = false)
 	private String semestre;
 
 	private Double valor;
-	
-	@Column(name = "aluno_id",nullable = false)
-	private Long alunomoId;
-	
-	
-	@Column(name = "course_id",nullable = false)
+
+	@Column(name = "aluno_id", nullable = false)
+	private Long alunoId;
+
+	@Column(name = "course_id", nullable = false)
 	private Long courseId;
 
 	public Matriculado() {
 		super();
 	}
 
-	public Long getAlunomoId() {
-		return alunomoId;
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "aluno_id", nullable = false, insertable = false, updatable = false)
+	private Aluno aluno;
+
+	public Aluno getAlunoId() {
+		return aluno;
 	}
 
-	public void setAlunomoId(Long alunomoId) {
-		this.alunomoId = alunomoId;
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
+	private Course course;
+
+	public Course getourseId() {
+		return course;
 	}
 
-	public Long getCourseId() {
-		return courseId;
+	public void set(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
-	public void setCourseId(Long courseId) {
-		this.courseId = courseId;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public int getAno() {
@@ -73,10 +86,34 @@ public class Matriculado {
 		this.valor = valor;
 	}
 
+	public Long getAlunomoId() {
+		return alunoId;
+	}
+
+	public void setAlunomoId(Long alunomoId) {
+		this.alunoId = alunomoId;
+	}
+
+	public Long getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
 	@Override
 	public String toString() {
-		return "Frequenta [alunomoId=" + alunomoId + ", courseId=" + courseId + ", ano=" + ano + ", semestre="
-				+ semestre + ", valor=" + valor + "]";
+		return "Matriculado [id=" + id + ", ano=" + ano + ", semestre=" + semestre + ", valor=" + valor + ", alunomoId="
+				+ alunoId + ", courseId=" + courseId + ", aluno=" + aluno + "]";
 	}
 
 }
