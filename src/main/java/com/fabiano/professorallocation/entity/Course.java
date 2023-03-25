@@ -24,11 +24,10 @@ public class Course {
 	private String name;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "matricula_id",nullable = false, insertable = false, updatable = false, referencedColumnName = "id")
+	@JoinColumn(name = "matricula_id", nullable = false, insertable = false, updatable = false, referencedColumnName = "id")
 
 	private Matriculado matriculado;
-	
-	
+
 	public Matriculado getMatriculado() {
 		return matriculado;
 	}
@@ -39,7 +38,7 @@ public class Course {
 
 	@OneToMany(mappedBy = "course")
 	List<Matriculado> matriculados;
-	
+
 	public Course() {
 		super();
 	}
