@@ -16,10 +16,11 @@ public class Professor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true, nullable = false)
 	private Long id;
-	@Column(nullable = false)
+
+	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(length = 14, nullable = false, unique = true)
+	@Column(name = "cpf", length = 14, nullable = false, unique = true)
 	private String cpf;
 
 	@Column(name = "department_id", nullable = false)
@@ -27,8 +28,12 @@ public class Professor {
 
 	// Criando atributo de navegação
 	@ManyToOne(optional = false) // Cardinalidade minima por padrão é true
-	@JoinColumn(name = "department_id", nullable = false, insertable = false, updatable = false, referencedColumnName = "id") // Faz a junção das
+	@JoinColumn(name = "department_id", nullable = false, insertable = false, updatable = false, referencedColumnName = "id")
 	private Department department;
+	
+	public Professor() {
+		super();
+	}
 
 	public Department getDepartment() {
 		return department;
@@ -36,11 +41,6 @@ public class Professor {
 
 	public void setDepartment(Department department) {
 		this.department = department;
-	}
-
-	public Professor() {
-		super();
-
 	}
 
 	public Long getId() {
@@ -79,5 +79,4 @@ public class Professor {
 	public String toString() {
 		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + ", departmentId=" + departmentId + "]";
 	}
-
 }
