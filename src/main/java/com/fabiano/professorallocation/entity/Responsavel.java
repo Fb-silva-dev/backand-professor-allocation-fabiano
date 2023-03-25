@@ -18,36 +18,37 @@ public class Responsavel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(name="name_id",nullable = false)
 	private String name;
 
 	@Column(length = 11, nullable = false, unique = true)
 	private String telefone;
 
-	@Column(length = 14, nullable = false, unique = true)
+	@Column(name="cpf",length = 14, nullable = false, unique = true)
 	private String cpf;
 
-	@OneToMany(mappedBy = "responsavel")
-	List<Aluno> aluno;
-
+	@OneToMany(mappedBy  = "responsavel")
+	List<Aluno> alunos;
+	
+	
 	public Responsavel() {
 		super();
 	}
 
-	public Long getResponsavel_id() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setResponsavel_id(Long responsavel_id) {
-		this.id = responsavel_id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setNome(String nome) {
-		this.name = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getTelefone() {
@@ -66,10 +67,20 @@ public class Responsavel {
 		this.cpf = cpf;
 	}
 
-	@Override
-	public String toString() {
-		return "Responsavel [id=" + id + ", nome=" + name + ", telefone=" + telefone + ", cpf="
-				+ cpf + "]";
+	public List<Aluno> getAlunos() {
+		return alunos;
 	}
 
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	@Override
+	public String toString() {
+		return "Responsavel [id=" + id + ", name=" + name + ", telefone=" + telefone + ", cpf=" + cpf + ", alunos="
+				+ alunos + "]";
+	}
+	
+	
+		
 }
