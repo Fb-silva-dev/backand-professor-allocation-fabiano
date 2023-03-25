@@ -30,28 +30,16 @@ public class Matriculado {
 	@Column(name = "course_id", nullable = false)
 	private Long courseId;
 
-	public Matriculado() {
-		super();
-	}
-
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "aluno_id", nullable = false, insertable = false, updatable = false)
 	private Aluno aluno;
-
-	public Aluno getAlunoId() {
-		return aluno;
-	}
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
 	private Course course;
 
-	public Course getourseId() {
-		return course;
-	}
-
-	public void set(Aluno aluno) {
-		this.aluno = aluno;
+	public Matriculado() {
+		super();
 	}
 
 	public Long getId() {
@@ -86,12 +74,12 @@ public class Matriculado {
 		this.valor = valor;
 	}
 
-	public Long getAlunomoId() {
+	public Long getAlunoId() {
 		return alunoId;
 	}
 
-	public void setAlunomoId(Long alunomoId) {
-		this.alunoId = alunomoId;
+	public void setAlunoId(Long alunoId) {
+		this.alunoId = alunoId;
 	}
 
 	public Long getCourseId() {
@@ -110,10 +98,19 @@ public class Matriculado {
 		this.aluno = aluno;
 	}
 
-	@Override
-	public String toString() {
-		return "Matriculado [id=" + id + ", ano=" + ano + ", semestre=" + semestre + ", valor=" + valor + ", alunomoId="
-				+ alunoId + ", courseId=" + courseId + ", aluno=" + aluno + "]";
+	public Course getCourse() {
+		return course;
 	}
 
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	@Override
+	public String toString() {
+		return "Matriculado [id=" + id + ", ano=" + ano + ", semestre=" + semestre + ", valor=" + valor + ", alunoId="
+				+ alunoId + ", courseId=" + courseId + ", aluno=" + aluno + ", course=" + course + "]";
+	}
+
+	
 }
