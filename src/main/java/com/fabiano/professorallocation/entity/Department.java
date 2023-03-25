@@ -26,6 +26,7 @@ public class Department {
 
 	@OneToMany(mappedBy = "department")
 	List<Professor> professors;
+
 	
 	public Department() {
 		super();
@@ -47,9 +48,19 @@ public class Department {
 		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return "Department [id " + id + ", name =" + name + "]";
+	public List<Professor> getProfessors() {
+		return professors;
 	}
 
+	public void setProfessors(List<Professor> professors) {
+		this.professors = professors;
+	}
+
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", name=" + name + ", professors=" + professors + "]";
+	}
+	
+	
+	
 }
