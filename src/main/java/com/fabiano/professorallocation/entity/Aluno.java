@@ -14,44 +14,45 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "aluno")
 public class Aluno {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(unique = true, nullable = false)
 	private Long id;
 
-	@Column(length = 100, nullable = false)
+	@Column(name = "name", length = 100, nullable = false)
 	private String name;
 
-	@Column(length = 14, nullable = false, unique = true)
+	@Column(name = "cpf", length = 14, nullable = false, unique = true)
 	private String cpf;
 
-	@Column(length = 100, nullable = false)
+	@Column(name = "rua", length = 100, nullable = false)
 	private String rua;
 
-	@Column(length = 3, nullable = false)
+	@Column(name = "numero", length = 3, nullable = false)
 	private Long numero;
 
-	@Column(length = 100, nullable = false)
+	@Column(name = "bairro", length = 100, nullable = false)
 	private String bairro;
 
-	@Column(length = 9, nullable = false)
+	@Column(name = "cep", length = 9, nullable = false)
 	private String cep;
 
-	@Column(length = 2, nullable = false)
+	@Column(name = "idade", length = 2, nullable = false)
 	private Long idade;
 
-	@Column(length = 11, nullable = false)
+	@Column(name = "data_nascimento", length = 11, nullable = false)
 	private Date data_nascimento;
 
-	
-	
+	@Column(name = "responsavel_id", nullable = false)
+	private Long responsavelId;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "responsavel_id", nullable = false, insertable = false, updatable = false)
+	private Responsavel responsavel;
+
 	public Aluno() {
 		super();
 	}
-
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "responsavel_id", nullable = false, insertable = false, updatable = false, referencedColumnName = "id")
-	private Responsavel responsavel;
 
 	public Long getId() {
 		return id;
@@ -61,12 +62,12 @@ public class Aluno {
 		this.id = id;
 	}
 
-	public String getNome() {
+	public String getName() {
 		return name;
 	}
 
-	public void setNome(String nome) {
-		this.name = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCpf() {
@@ -125,23 +126,14 @@ public class Aluno {
 		this.data_nascimento = data_nascimento;
 	}
 
-	public Responsavel getResponsavel() {
-		return responsavel;
-	}
-
-	public void setResponsavel(Responsavel responsavel) {
-		this.responsavel = responsavel;
-	}
-
 	@Override
 	public String toString() {
-		return "Aluno [id=" + id + ", nome=" + name + ", cpf=" + cpf + ", rua=" + rua + ", numero=" + numero
+		return "Aluno [id=" + id + ", name=" + name + ", cpf=" + cpf + ", rua=" + rua + ", numero=" + numero
 				+ ", bairro=" + bairro + ", cep=" + cep + ", idade=" + idade + ", data_nascimento=" + data_nascimento
-				+ ", responsavel=" + responsavel + "]";
+				+ ", responsavelId=" + responsavelId + ", ResponsavelId=" + responsavelId + "]";
 	}
+
 	
 	
 
-	
-
-}	
+}
