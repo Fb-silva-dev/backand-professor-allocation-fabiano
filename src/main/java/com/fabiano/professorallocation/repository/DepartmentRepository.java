@@ -10,4 +10,5 @@ import com.fabiano.professorallocation.entity.Department;
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
 
 	List<Department> findByNameContainingIgnoreCase(String name);
+
 }
