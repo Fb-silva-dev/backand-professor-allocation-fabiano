@@ -1,5 +1,7 @@
 package com.fabiano.professorallocation.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,13 +9,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "matriculado")
-public class Matriculado {
-	@Id
+@Table(name = "matricula")
+public class Matricula {
+	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true, nullable = false)
 	private Long id;
 
 	@Column(length = 4, nullable = false)
@@ -37,8 +41,11 @@ public class Matriculado {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
 	private Course course;
-
-	public Matriculado() {
+//Testando essa
+	@OneToMany(mappedBy = "matricula")
+	List<Course> courses;
+//------	
+	public Matricula() {
 		super();
 	}
 
@@ -108,9 +115,11 @@ public class Matriculado {
 
 	@Override
 	public String toString() {
-		return "Matriculado [id=" + id + ", ano=" + ano + ", semestre=" + semestre + ", valor=" + valor + ", alunoId="
+		return "Matricula [id=" + id + ", ano=" + ano + ", semestre=" + semestre + ", valor=" + valor + ", alunoId="
 				+ alunoId + ", courseId=" + courseId + ", aluno=" + aluno + ", course=" + course + "]";
 	}
+
+	
 
 	
 }
