@@ -20,7 +20,7 @@ public class Professor {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "cpf", length = 14, nullable = false, unique = true)
+	@Column(name = "cpf", length = 11, nullable = false, unique = true)
 	private String cpf;
 
 	@Column(name = "department_id", nullable = false)
