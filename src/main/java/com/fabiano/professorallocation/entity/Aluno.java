@@ -46,8 +46,8 @@ public class Aluno {
 	@Column(name = "responsavel_id", nullable = false)
 	private Long responsavelId;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "responsavel_id", nullable = false, insertable = false, updatable = false)
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "responsavel_id", nullable = true, insertable = false, updatable = false)
 	private Responsavel responsavel;
 
 	public Aluno() {
