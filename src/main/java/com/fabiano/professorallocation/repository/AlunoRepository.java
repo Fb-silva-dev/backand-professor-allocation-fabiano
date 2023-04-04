@@ -9,5 +9,4 @@ import com.fabiano.professorallocation.entity.Aluno;
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 	List<Aluno> findByResponsavelId(Long responsavelId);
-
 }
