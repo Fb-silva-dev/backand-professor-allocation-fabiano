@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
+
 import com.fabiano.professorallocation.entity.Responsavel;
 
 @DataJpaTest
@@ -30,5 +31,18 @@ public class ResponsavelRepositoryTest {
 		for (Responsavel item : items) {
 			System.out.println(item);
 		}
+	}
+	
+	@Test
+	public void create() {
+		
+		Responsavel responsavel = new Responsavel();
+		responsavel.setCpf("98765434512");
+		responsavel.setName("Igor Farias");
+		responsavel.setTelefone("81996756543");
+		responsavel.setAlunoId(1L);
+		
+		responsavel = repository.save(responsavel);
+		System.out.println(responsavel);
 	}
 }
