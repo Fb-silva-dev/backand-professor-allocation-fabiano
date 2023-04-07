@@ -18,7 +18,7 @@ public class Responsavel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name="name_id",nullable = false)
+	@Column(name="name",nullable = false)
 	private String name;
 
 	@Column(length = 11, nullable = false, unique = true)
@@ -80,7 +80,6 @@ public class Responsavel {
 		return "Responsavel [id=" + id + ", name=" + name + ", telefone=" + telefone + ", cpf=" + cpf + ", alunos="
 				+ alunos + "]";
 	}
-	
-	
+
 		
 }

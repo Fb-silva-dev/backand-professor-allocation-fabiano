@@ -34,9 +34,11 @@ public class CourseRepositoryTest {
 	@Test
 	public void create() {
 		Course course = new Course();
-		course.setId(null);
+		//course.setId(null);
 		course.setName("Logica de Programação");
+		course.setValor(180.00);
 		course.setMatricula(null);
+		
 		
 		// System.out.println("Id atual:" + department.getId());
 		course = repository.save(course);

@@ -1,7 +1,5 @@
 package com.fabiano.professorallocation.entity;
 
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,21 +32,26 @@ public class Aluno {
 	@Column(name = "bairro", length = 100, nullable = false)
 	private String bairro;
 
-	@Column(name = "cep", length = 9, nullable = false)
+	@Column(name = "cep", length = 8, nullable = false)
 	private String cep;
 
 	@Column(name = "idade", length = 2, nullable = false)
 	private Long idade;
 
-	@Column(name = "data_nascimento", length = 11, nullable = false)
-	private Date data_nascimento;
-
-	@Column(name = "responsavel_id", nullable = false)
+	@Column(name = "responsavel_id", nullable = true)
 	private Long responsavelId;
 
 	@ManyToOne(optional = true)
-	@JoinColumn(name = "responsavel_id", nullable = true, insertable = false, updatable = false)
+	@JoinColumn(name = "responsavel_id", nullable = true, insertable = false, updatable = false, referencedColumnName = "id")
 	private Responsavel responsavel;
+
+	@Column(name = "matricula_id", nullable = true)
+	private Long matriculaId;
+
+	// Criando atributo de navegação
+	@ManyToOne(optional = true) // Cardinalidade minima por padrão é true
+	@JoinColumn(name = "matricula_id", nullable = true, insertable = false, updatable = false, referencedColumnName = "id")
+	private Matricula matricula;
 
 	public Aluno() {
 		super();
@@ -118,22 +121,43 @@ public class Aluno {
 		this.idade = idade;
 	}
 
-	public Date getData_nascimento() {
-		return data_nascimento;
+	public Long getResponsavelId() {
+		return responsavelId;
 	}
 
-	public void setData_nascimento(Date data_nascimento) {
-		this.data_nascimento = data_nascimento;
+	public void setResponsavelId(Long responsavelId) {
+		this.responsavelId = responsavelId;
+	}
+
+	public Responsavel getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
+	}
+
+	public Long getMatriculaId() {
+		return matriculaId;
+	}
+
+	public void setMatriculaId(Long matriculaId) {
+		this.matriculaId = matriculaId;
+	}
+
+	public Matricula getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
 	}
 
 	@Override
 	public String toString() {
 		return "Aluno [id=" + id + ", name=" + name + ", cpf=" + cpf + ", rua=" + rua + ", numero=" + numero
-				+ ", bairro=" + bairro + ", cep=" + cep + ", idade=" + idade + ", data_nascimento=" + data_nascimento
-				+ ", responsavelId=" + responsavelId + ", ResponsavelId=" + responsavelId + "]";
+				+ ", bairro=" + bairro + ", cep=" + cep + ", idade=" + idade + ", responsavelId=" + responsavelId
+				+ ", responsavel=" + responsavel + ", matriculaId=" + matriculaId + ", matricula=" + matricula + "]";
 	}
-
-	
-	
 
 }

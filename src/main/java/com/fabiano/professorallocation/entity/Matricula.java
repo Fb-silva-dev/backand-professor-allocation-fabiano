@@ -26,8 +26,6 @@ public class Matricula {
 	@Column(length = 4, nullable = false)
 	private String semestre;
 
-	private Double valor;
-
 	@Column(name = "aluno_id", nullable = false)
 	private Long alunoId;
 
@@ -41,10 +39,13 @@ public class Matricula {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
 	private Course course;
-//Testando essa
+
+	//Testando essa
 	@OneToMany(mappedBy = "matricula")
-	List<Course> courses;
-//------	
+	List<Course> courses;	
+	//@OneToMany(mappedBy = "matricula")
+	//List<Aluno> alunos; */
+//-----------------------------------------	
 	public Matricula() {
 		super();
 	}
@@ -73,13 +74,6 @@ public class Matricula {
 		this.semestre = semestre;
 	}
 
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
 
 	public Long getAlunoId() {
 		return alunoId;
@@ -115,11 +109,7 @@ public class Matricula {
 
 	@Override
 	public String toString() {
-		return "Matricula [id=" + id + ", ano=" + ano + ", semestre=" + semestre + ", valor=" + valor + ", alunoId="
+		return "Matricula [id=" + id + ", ano=" + ano + ", semestre=" + semestre + ", alunoId="
 				+ alunoId + ", courseId=" + courseId + ", aluno=" + aluno + ", course=" + course + "]";
-	}
-
-	
-
-	
+	}	
 }

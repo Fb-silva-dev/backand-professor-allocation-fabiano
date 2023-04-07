@@ -1,7 +1,5 @@
 package com.fabiano.professorallocation.entity;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,71 +17,69 @@ public class Course {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true, nullable = false)
 	private Long id;
-	
-	@Column(name = "name",length = 100, nullable = false)
+
+	@Column(name = "name", length = 100, nullable = false)
 	private String name;
+	
+	@Column(name = "valor", length = 4, nullable = false)
+	private Double valor;
 
 	@Column(name = "matricula_id", nullable = true)
 	private Long matriculaId;
 
 	// Criando atributo de navegação
-		@ManyToOne(optional = true) // Cardinalidade minima por padrão é true
-		@JoinColumn(name = "matricula_id", nullable = true, insertable = false, updatable = false, referencedColumnName = "id")
-		private Matricula matricula;
+	@ManyToOne(optional = true) // Cardinalidade minima por padrão é true
+	@JoinColumn(name = "matricula_id", nullable = true, insertable = false, updatable = false, referencedColumnName = "id")
+	private Matricula matricula;
 
-		
-		public Course() {
+	public Course() {
 		super();
 	}
 
+	public Long getId() {
+		return id;
+	}
 
-		public Long getId() {
-			return id;
-		}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
+	public String getName() {
+		return name;
+	}
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+	public void setName(String name) {
+		this.name = name;
+	}
 
+	public Double getValor() {
+		return valor;
+	}
 
-		public String getName() {
-			return name;
-		}
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
 
+	public Long getMatriculaId() {
+		return matriculaId;
+	}
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	public void setMatriculaId(Long matriculaId) {
+		this.matriculaId = matriculaId;
+	}
 
+	public Matricula getMatricula() {
+		return matricula;
+	}
 
-		public Long getMatriculaId() {
-			return matriculaId;
-		}
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
+	}
 
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", valor=" + valor + ", matriculaId=" + matriculaId
+				+ ", matricula=" + matricula + "]";
+	}
 
-		public void setMatriculaId(Long matriculaId) {
-			this.matriculaId = matriculaId;
-		}
-
-
-		public Matricula getMatricula() {
-			return matricula;
-		}
-
-
-		public void setMatricula(Matricula matricula) {
-			this.matricula = matricula;
-		}
-
-
-		@Override
-		public String toString() {
-			return "Course [id=" + id + ", name=" + name + ", matriculaId=" + matriculaId + ", matricula=" + matricula
-					+ "]";
-		}
-
-		
-
-	
 }
