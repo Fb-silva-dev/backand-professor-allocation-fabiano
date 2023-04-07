@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -18,19 +20,25 @@ public class Responsavel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name="name",nullable = false)
+	@Column(name = "name", nullable = false)
 	private String name;
 
 	@Column(length = 11, nullable = false, unique = true)
 	private String telefone;
 
-	@Column(name="cpf",length = 14, nullable = false, unique = true)
+	@Column(name = "cpf", length = 14, nullable = false, unique = true)
 	private String cpf;
 
-	@OneToMany(mappedBy  = "responsavel")
-	List<Aluno> alunos;
-	
-	
+	@Column(name = "aluno_id", nullable = false)
+	private Long alunoId;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "aluno_id", nullable = false, insertable = false, updatable = false)
+	private Aluno aluno;
+
+	@OneToMany(mappedBy = "responsavel")
+	private List<Aluno> alunos;
+
 	public Responsavel() {
 		super();
 	}
@@ -67,6 +75,22 @@ public class Responsavel {
 		this.cpf = cpf;
 	}
 
+	public Long getAlunoId() {
+		return alunoId;
+	}
+
+	public void setAlunoId(Long alunoId) {
+		this.alunoId = alunoId;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
 	public List<Aluno> getAlunos() {
 		return alunos;
 	}
@@ -77,9 +101,10 @@ public class Responsavel {
 
 	@Override
 	public String toString() {
-		return "Responsavel [id=" + id + ", name=" + name + ", telefone=" + telefone + ", cpf=" + cpf + ", alunos="
-				+ alunos + "]";
+		return "Responsavel [id=" + id + ", name=" + name + ", telefone=" + telefone + ", cpf=" + cpf + ", alunoId="
+				+ alunoId + ", aluno=" + aluno + ", alunos=" + alunos + "]";
 	}
 
-		
+	
+
 }
