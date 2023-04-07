@@ -35,9 +35,11 @@ public class MatriculaRepositoryTest {
 	@Test
 	public void create() {
 		Matricula matricula = new Matricula();
+		
 		matricula.setAlunoId(1L);
 		matricula.setCourseId(1L);
 		matricula.setAno(2023);
+		matricula.setSemestre("Primeiro");
 		
 		matricula = repository.save(matricula);
 		System.out.println(matricula);
