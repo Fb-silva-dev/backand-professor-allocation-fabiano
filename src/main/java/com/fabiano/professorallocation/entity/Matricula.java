@@ -1,5 +1,6 @@
 package com.fabiano.professorallocation.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -15,15 +16,15 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "matricula")
 public class Matricula {
-	@Id 
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(unique = true, nullable = false)
+	// @Column(unique = true, nullable = false)
 	private Long id;
 
-	@Column(length = 4, nullable = false)
+	@Column(name = "ano", length = 4, nullable = false)
 	private int ano;
 
-	@Column(length = 4, nullable = false)
+	@Column(name = "semestre" ,length = 10, nullable = false)
 	private String semestre;
 
 	@Column(name = "aluno_id", nullable = false)
@@ -40,11 +41,13 @@ public class Matricula {
 	@JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
 	private Course course;
 
-	//Testando essa
+	// Testando essa
 	@OneToMany(mappedBy = "matricula")
-	List<Course> courses;	
-	//@OneToMany(mappedBy = "matricula")
-	//List<Aluno> alunos; */
+	private List<Course> courses;
+
+	@OneToMany(mappedBy = "matricula")
+	private List<Aluno> alunos;
+
 //-----------------------------------------	
 	public Matricula() {
 		super();
@@ -73,7 +76,6 @@ public class Matricula {
 	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
-
 
 	public Long getAlunoId() {
 		return alunoId;
@@ -109,7 +111,14 @@ public class Matricula {
 
 	@Override
 	public String toString() {
-		return "Matricula [id=" + id + ", ano=" + ano + ", semestre=" + semestre + ", alunoId="
-				+ alunoId + ", courseId=" + courseId + ", aluno=" + aluno + ", course=" + course + "]";
-	}	
+		return "Matricula [id=" + id + ", ano=" + ano + ", semestre=" + semestre + ", alunoId=" + alunoId
+				+ ", courseId=" + courseId + ", aluno=" + aluno + ", course=" + course + "]";
+	}
+
+	public static void main(String[] args) {
+		Matricula matricula = new Matricula();
+		matricula.id = 1L;
+		matricula.courses = new ArrayList<Course>();
+
+	}
 }
