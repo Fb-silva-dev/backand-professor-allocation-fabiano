@@ -15,5 +15,9 @@ public AlunoService(AlunoRepository repository) {
 	this.repository = repository;
 }
 
-
+public Aluno create(Aluno aluno) {
+	// uma criação so pode ser feita quando não exisxtir um id
+	aluno.setId(null);
+	return saveInternal(aluno);
+}
 }
