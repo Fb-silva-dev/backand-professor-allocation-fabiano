@@ -38,11 +38,8 @@ public class CourseRepositoryTest {
 		course.setName("Logica de Programação");
 		course.setValor(180.00);
 		course.setMatricula(null);
-		
-		
-		// System.out.println("Id atual:" + department.getId());
+
 		course = repository.save(course);
 		System.out.println(course);
-		// System.out.println("Id depois de Salvar:" + department.getId());
 	}	
 }

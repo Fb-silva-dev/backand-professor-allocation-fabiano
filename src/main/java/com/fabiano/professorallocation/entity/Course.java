@@ -20,7 +20,7 @@ public class Course {
 
 	@Column(name = "name", length = 100, nullable = false)
 	private String name;
-	
+
 	@Column(name = "valor", length = 4, nullable = false)
 	private Double valor;
 
@@ -32,6 +32,13 @@ public class Course {
 	@JoinColumn(name = "matricula_id", nullable = true, insertable = false, updatable = false, referencedColumnName = "id")
 	private Matricula matricula;
 
+	@Column(name = "allocation_id",nullable = true)
+	private Long allocationId; 
+	
+	@ManyToOne(optional = false) // Cardinalidade minima por padrão é true
+	@JoinColumn(name = "allocation_id", nullable = true, insertable = false, updatable = false, referencedColumnName = "id")
+	private Allocation allocation;
+	
 	public Course() {
 		super();
 	}
@@ -76,10 +83,28 @@ public class Course {
 		this.matricula = matricula;
 	}
 
+	public Long getAllocationId() {
+		return allocationId;
+	}
+
+	public void setAllocationId(Long allocationId) {
+		this.allocationId = allocationId;
+	}
+
+	public Allocation getAllocation() {
+		return allocation;
+	}
+
+	public void setAllocation(Allocation allocation) {
+		this.allocation = allocation;
+	}
+
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", name=" + name + ", valor=" + valor + ", matriculaId=" + matriculaId
-				+ ", matricula=" + matricula + "]";
+				+ ", matricula=" + matricula + ", allocationId=" + allocationId + ", allocation=" + allocation + "]";
 	}
+
+	
 
 }

@@ -25,11 +25,18 @@ public class Professor {
 
 	@Column(name = "department_id", nullable = false)
 	private Long departmentId;
-
+	
 	// Criando atributo de navegação
 	@ManyToOne(optional = false) // Cardinalidade minima por padrão é true
 	@JoinColumn(name = "department_id", nullable = false, insertable = false, updatable = false, referencedColumnName = "id")
 	private Department department;
+	
+	@Column(name = "allocation_id",nullable = true)
+	private Long allocationId; 
+	
+	@ManyToOne(optional = true) // Cardinalidade minima por padrão é true
+	@JoinColumn(name = "allocation_id", nullable = false, insertable = false, updatable = false, referencedColumnName = "id")
+	private Allocation allocation;
 	
 	public Professor() {
 		super();
@@ -75,8 +82,27 @@ public class Professor {
 		this.departmentId = departmentId;
 	}
 
+	public Long getAllocationId() {
+		return allocationId;
+	}
+
+	public void setAllocationId(Long allocationId) {
+		this.allocationId = allocationId;
+	}
+
+	public Allocation getAllocation() {
+		return allocation;
+	}
+
+	public void setAllocation(Allocation allocation) {
+		this.allocation = allocation;
+	}
+
 	@Override
 	public String toString() {
-		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + ", departmentId=" + departmentId + "]";
+		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + ", departmentId=" + departmentId
+				+ ", allocationId=" + allocationId + ", allocation=" + allocation + ", department=" + department + "]";
 	}
+
+	
 }

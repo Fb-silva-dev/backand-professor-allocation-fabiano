@@ -2,6 +2,7 @@ package com.fabiano.professorallocation.entity;
 
 import java.time.DayOfWeek;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -50,6 +52,12 @@ public class Allocation {
 	@JoinColumn(name = "professor_id", nullable = false, insertable = false, updatable = false)
 	private Professor professor;
 
+	@OneToMany(mappedBy = "allocation")
+	private List<Course> courses;
+	
+	@OneToMany(mappedBy = "allocation")
+	private List<Professor> professores;
+	
 	public Allocation() {
 		super();
 	}
