@@ -30,7 +30,7 @@ public class MatriculaRepositoryTest {
 		for(Matricula item : items) {
 			System.out.println(item);
 		}
-	}
+	} 
 	
 	@Test
 	public void create() {

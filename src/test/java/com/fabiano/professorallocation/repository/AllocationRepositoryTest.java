@@ -33,7 +33,7 @@ public class AllocationRepositoryTest {
 		
 		for(Allocation item : items) {
 			System.out.println(item);
-		}
+		}  
 	}
 	
 	@Test

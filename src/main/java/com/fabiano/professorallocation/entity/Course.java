@@ -105,6 +105,4 @@ public class Course {
 				+ ", matricula=" + matricula + ", allocationId=" + allocationId + ", allocation=" + allocation + "]";
 	}
 
-	
-
 }

@@ -38,7 +38,7 @@ public class Responsavel {
 
 	@OneToMany(mappedBy = "responsavel")
 	private List<Aluno> alunos;
-
+	
 	public Responsavel() {
 		super();
 	}
@@ -106,5 +106,4 @@ public class Responsavel {
 	}
 
 	
-
 }

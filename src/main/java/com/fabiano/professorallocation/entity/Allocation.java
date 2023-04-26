@@ -54,10 +54,10 @@ public class Allocation {
 
 	@OneToMany(mappedBy = "allocation")
 	private List<Course> courses;
-	
+
 	@OneToMany(mappedBy = "allocation")
 	private List<Professor> professores;
-	
+
 	public Allocation() {
 		super();
 	}

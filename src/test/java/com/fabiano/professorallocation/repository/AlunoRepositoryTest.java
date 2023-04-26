@@ -34,13 +34,13 @@ public class AlunoRepositoryTest {
 	@Test
 	public void create() {
 		Aluno aluno = new Aluno();
-		aluno.setName("samara");
+		aluno.setName("Gustavo");
 		aluno.setBairro("Casa Amarela");
 		aluno.setRua("Alto santa Isabel");
 		aluno.setNumero(16L);
-		aluno.setCpf("00987654123");
-		aluno.setCep("53300222");
-		aluno.setIdade(15L);
+		aluno.setCpf("00987654432");
+		aluno.setCep("53300098");
+		aluno.setIdade(20L);
 		aluno.setMatricula(null);
 		aluno.setResponsavel(null);
 		

@@ -22,7 +22,12 @@ public class CourseService {
 		course.setId(null);
 		return saveInternal(course);
 	}
-
+	
+	 public Course save(Course course) {
+	        course.setId(null);
+	        return save(course);
+	    }
+ 
 	public Course update(Course course) {
 		Long id = course.getId();
 		// atualizar um aquivo que exixte.
@@ -51,8 +56,12 @@ public class CourseService {
 
 	}
 
-	public List<Course> findAll() {
+	public List<Course> findAll(String name) {
 		return repository.findAll();
 	}
 
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		
+	}
 }

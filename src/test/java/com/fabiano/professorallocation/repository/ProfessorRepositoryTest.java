@@ -33,10 +33,10 @@ public class ProfessorRepositoryTest {
 	}
 	
 	@Test
-	public void create() {
+	public void create() { 
 		Professor professor = new Professor();
-		professor.setName("Darilson");
-		professor.setCpf("00897654312");
+		professor.setName("Augusto");
+		professor.setCpf("00897654321");
 		professor.setDepartmentId(1L);
 		
 		// System.out.println("Id atual:" + department.getId());

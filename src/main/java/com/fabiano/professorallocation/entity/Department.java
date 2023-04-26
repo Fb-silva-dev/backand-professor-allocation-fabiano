@@ -18,7 +18,7 @@ public class Department {
 	@Column(nullable = false)
 	// Criar um (equivalente) ao auto-incremente
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	// Colunm (Usado para alterar as propriedades da coluna
 	@Column(name = "name", unique = true, nullable = false)
@@ -36,7 +36,7 @@ public class Department {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

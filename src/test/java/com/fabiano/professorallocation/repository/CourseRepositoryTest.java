@@ -35,7 +35,7 @@ public class CourseRepositoryTest {
 	public void create() {
 		Course course = new Course();
 		//course.setId(null);
-		course.setName("Logica de Programação");
+		course.setName("Ciencias Naturais");
 		course.setValor(180.00);
 		course.setMatricula(null);
 

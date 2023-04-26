@@ -37,7 +37,7 @@ public class ResponsavelRepositoryTest {
 	public void create() {
 		
 		Responsavel responsavel = new Responsavel();
-		responsavel.setCpf("98765434512");
+		responsavel.setCpf("98767776543");
 		responsavel.setName("Igor Farias");
 		responsavel.setTelefone("81996756543");
 		responsavel.setAlunoId(1L);

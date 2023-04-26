@@ -1,6 +1,5 @@
 package com.fabiano.professorallocation.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -115,10 +114,10 @@ public class Matricula {
 				+ ", courseId=" + courseId + ", aluno=" + aluno + ", course=" + course + "]";
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Matricula matricula = new Matricula();
 		matricula.id = 1L;
 		matricula.courses = new ArrayList<Course>();
 
-	}
+	} */
 }
