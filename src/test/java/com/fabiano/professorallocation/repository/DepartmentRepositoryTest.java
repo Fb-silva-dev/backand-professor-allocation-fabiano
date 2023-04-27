@@ -36,8 +36,8 @@ public class DepartmentRepositoryTest {
 	public void create() {
 		Department department = new Department();
 		//department.setName("Departamento de Informatica");
-		//department.setName("Departamento de Biologia");
-		department.setName("Departamento de Ciencias");
+		department.setName("Departamento RH");
+		//department.setName("Departamento de Ciencias");
 		//department.setName("Departamento de Engenharia");
 
 		// System.out.println("Id atual:" + department.getId());

@@ -1,5 +1,7 @@
 package com.fabiano.professorallocation.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class Professor {
 	// Criando atributo de navegação
 	@ManyToOne(optional = false) // Cardinalidade minima por padrão é true
 	@JoinColumn(name = "department_id", nullable = false, insertable = false, updatable = false, referencedColumnName = "id")
+	@JsonIgnoreProperties({"professors"})
 	private Department department;
 
 	@Column(name = "allocation_id", nullable = true)

@@ -2,6 +2,8 @@ package com.fabiano.professorallocation.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +36,7 @@ public class Matricula {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "aluno_id", nullable = false, insertable = false, updatable = false)
+	@JsonIgnoreProperties({"alunos"})
 	private Aluno aluno;
 
 	@ManyToOne(optional = false)

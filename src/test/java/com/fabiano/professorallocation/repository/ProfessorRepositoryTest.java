@@ -35,7 +35,7 @@ public class ProfessorRepositoryTest {
 	@Test
 	public void create() { 
 		Professor professor = new Professor();
-		professor.setName("Augusto");
+		professor.setName("Lucas Godoy");
 		professor.setCpf("00897654321");
 		professor.setDepartmentId(1L);
 		
