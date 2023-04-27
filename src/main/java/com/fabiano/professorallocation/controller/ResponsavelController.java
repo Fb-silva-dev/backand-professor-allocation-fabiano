@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping(path = "/departments")
+@RequestMapping(path = "/responsaves")
 public class ResponsavelController {
 
     private final ResponsavelService responsavelService;
@@ -45,7 +45,7 @@ public class ResponsavelController {
         return new ResponseEntity<>(responsaves, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Find a reeponsavel by id")
+    @ApiOperation(value = "Find a reponsavel by id")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 400, message = "Bad Request"),
@@ -62,7 +62,7 @@ public class ResponsavelController {
         }
     }
 
-    @ApiOperation(value = "Save a department")
+    @ApiOperation(value = "Save a responsavel")
     @ApiResponses({
             @ApiResponse(code = 201, message = "Created"),
             @ApiResponse(code = 400, message = "Bad Request")
@@ -78,7 +78,7 @@ public class ResponsavelController {
         }
     }
 
-    @ApiOperation(value = "Update a department")
+    @ApiOperation(value = "Update a responsavel")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 400, message = "Bad Request"),

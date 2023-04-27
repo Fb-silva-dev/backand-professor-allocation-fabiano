@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping(path = "/professors")
+@RequestMapping(path = "/alunos")
 public class AlunoController {
 
 	private final AlunoService alunoService;
@@ -48,7 +48,7 @@ public class AlunoController {
 			@ApiResponse(code = 404, message = "Not Found") })
 	@GetMapping(path = "/{aluno_id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Aluno> findById(@PathVariable(name = "professor_id") Long id) {
+	public ResponseEntity<Aluno> findById(@PathVariable(name = "aluno_id") Long id) {
 		Aluno aluno = alunoService.findById(id);
 		if (aluno == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -57,16 +57,16 @@ public class AlunoController {
 		}
 	}
 
-	@ApiOperation(value = "Find professors by department")
+	@ApiOperation(value = "Find alunos by responsavel")
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 400, message = "Bad Request") })
-	@GetMapping(path = "/department/{department_id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/responsavel/{responsavel_id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Aluno>> findByMatricula(@PathVariable(name = "Matricula_id") Long id) {
 		List<Aluno> alunos = alunoService.findByMatricula(id);
 		return new ResponseEntity<>(alunos, HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Save a professor")
+	@ApiOperation(value = "Save a aluno")
 	@ApiResponses({ @ApiResponse(code = 201, message = "Created"), @ApiResponse(code = 400, message = "Bad Request") })
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
@@ -79,10 +79,10 @@ public class AlunoController {
 		}
 	}
 
-	@ApiOperation(value = "Update a professor")
+	@ApiOperation(value = "Update a aluno")
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 400, message = "Bad Request"),
 			@ApiResponse(code = 404, message = "Not Found") })
-	@PutMapping(path = "/{professor_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(path = "/{aluno_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Aluno> update(@PathVariable(name =  "aluno_id") Long id,
 			@RequestBody Aluno aluno) {
