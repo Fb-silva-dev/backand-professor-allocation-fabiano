@@ -41,6 +41,7 @@ public class Matricula {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
+	@JsonIgnoreProperties({"courses"})
 	private Course course;
 
 	// Testando essa

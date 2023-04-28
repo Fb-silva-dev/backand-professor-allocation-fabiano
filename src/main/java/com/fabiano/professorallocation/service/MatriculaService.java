@@ -22,7 +22,7 @@ public class MatriculaService {
 		this.alunoService = alunoService;
 		this.courseService = courseService;
 	}
-	
+
 	public List<Matricula> findAll() {
 		return matriculaRepository.findAll();
 	}
@@ -92,7 +92,7 @@ public class MatriculaService {
 	}
 
 	private boolean hasCollision(Matricula currentMatricula, Matricula newMatricula) {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
